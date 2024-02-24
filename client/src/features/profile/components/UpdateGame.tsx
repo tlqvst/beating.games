@@ -18,7 +18,7 @@ export const UpdateGame = ({
       achievementsLink: game.achievementsLink,
       background: undefined,
       content: game.content,
-      date: new Date(game.date),
+      date: game.date ? new Date(game.date) : undefined,
       owned: game.owned,
       perfectGame: game.perfectGame,
       playtime: game.playtime,

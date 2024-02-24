@@ -1,12 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { EGameStatus } from '../../types/TGameStatus';
-import { IsIn, IsNotEmpty, IsOptional, MaxLength } from 'class-validator';
+import { IsIn, IsOptional, MaxLength } from 'class-validator';
 import { ToBoolean } from 'src/transformers/to-boolean';
 
 export class UpsertGameRequestDto {
-  @ApiProperty()
-  @IsNotEmpty()
-  date: Date;
+  @ApiProperty({ required: false })
+  @IsOptional()
+  date?: Date;
 
   @ApiProperty()
   @MaxLength(80)
@@ -18,7 +18,7 @@ export class UpsertGameRequestDto {
 
   @ApiProperty({ type: 'string', format: 'binary', required: false })
   @IsOptional()
-  background: string;
+  background?: string;
 
   @ApiProperty()
   playtime: number;
@@ -35,7 +35,7 @@ export class UpsertGameRequestDto {
   @ToBoolean()
   owned: boolean;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @MaxLength(200)
   achievementsLink: string;
 

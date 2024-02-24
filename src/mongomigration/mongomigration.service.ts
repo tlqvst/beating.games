@@ -3,6 +3,7 @@ import { log } from 'console';
 import { readFileSync } from 'fs';
 import { FileService } from 'src/files/file.service';
 import { PrismaService } from 'src/prisma.service';
+import { isDateParseable } from 'src/utils/date';
 
 interface ImportedUser {
   username: string;
@@ -70,9 +71,7 @@ export class MongoMigrationService {
           achievementsLink: game.achievementsLink ?? null,
           background: backgroundFile ?? null,
           content: game.content ? this.truncateString(game.content, 900) : '',
-          date: this.isDateParseable(game.date)
-            ? new Date(game.date)
-            : new Date(),
+          date: isDateParseable(game.date) ? new Date(game.date) : new Date(),
           owned: Boolean(game.owned),
           perfectGame: game.perfectGame ?? false,
           playtime: game.playtime ? parseInt(game.playtime) : null,
@@ -146,15 +145,6 @@ export class MongoMigrationService {
     const date = new Date(timestamp * 1000);
 
     return date;
-  }
-
-  private isDateParseable(dateString: string): boolean {
-    // Attempt to create a new Date object from the date string
-    const parsedDate = new Date(dateString);
-
-    // Check if the parsed date is a valid date
-    // The getTime() method returns NaN for invalid dates
-    return !isNaN(parsedDate.getTime());
   }
 
   private truncateString(str: string, maxLength: number): string {

@@ -48,7 +48,7 @@ model RolesOnUser {
 model Game {
   id  Int @default(autoincrement()) @id
   addedOn DateTime @db.Date @default(now())
-  date DateTime
+  date DateTime?
   title String @db.VarChar(80)
   system String @db.VarChar(80)
   background String? @db.VarChar(200)

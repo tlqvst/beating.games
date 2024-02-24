@@ -9,6 +9,7 @@ import { ListGamesRequestDto } from './dto/list-games-request.dto';
 import { FileService } from 'src/files/file.service';
 import { ListGamesResponseDto } from './dto/list-games-response.dto';
 import { EGameStatus } from 'src/types/TGameStatus';
+import { isDateParseable } from 'src/utils/date';
 
 @Injectable()
 export class GameService {
@@ -41,7 +42,12 @@ export class GameService {
 
     // Fetch games based on filters
     const filteredGames = await this.prisma.game.findMany({
-      orderBy: { date: 'desc' },
+      orderBy: {
+        date: {
+          sort: 'desc',
+          nulls: 'last',
+        },
+      },
       where: Object.fromEntries(
         Object.entries(where).filter(([, value]) => value !== undefined),
       ),
@@ -122,6 +128,7 @@ export class GameService {
     return this.prisma.game.create({
       data: {
         ...data,
+        date: isDateParseable(data.date as string) ? data.date : null,
         background: fileName,
       },
     });
@@ -149,6 +156,9 @@ export class GameService {
     return this.prisma.game.update({
       data: {
         ...params.data,
+        date: isDateParseable(params.data?.date as string)
+          ? params.data.date
+          : null,
         background: background ? fileName : game.background,
       },
       where: params.where,

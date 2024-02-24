@@ -61,6 +61,7 @@ export const GameFormFields = ({
         label="Date"
         mb="md"
         description="Date of starting, completing, dropping etc"
+        clearable
         {...form.getInputProps('date')}
       />
       <TextInput

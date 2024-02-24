@@ -14,7 +14,9 @@ import { getGameUrl } from '@/utils/imageUrls';
 
 export const Game = ({ game, onDelete, onUpdate }: IGame) => {
   const addedOnFormatted = new Date(game.addedOn).toLocaleDateString();
-  const dateFormatted = new Date(game.date).toLocaleDateString();
+  const dateFormatted = game.date
+    ? new Date(game.date).toLocaleDateString()
+    : null;
 
   return (
     <Box className={gameStyles.root}>
@@ -29,7 +31,9 @@ export const Game = ({ game, onDelete, onUpdate }: IGame) => {
         />
       </Box>
       <Box className={gameStyles.content}>
-        <Box className={gameStyles.textArea}>{dateFormatted}</Box>
+        {dateFormatted && (
+          <Box className={gameStyles.textArea}>{dateFormatted}</Box>
+        )}
         <Box className={gameStyles.textArea}>{game.system}</Box>
         <Box className={clsx(gameStyles.textArea, gameStyles.title)}>
           {game.title}

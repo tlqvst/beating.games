@@ -7,10 +7,10 @@
  */
 
 export interface UpsertGameRequestDto {
-  achievementsLink: string;
+  achievementsLink?: string;
   background?: Blob;
   content: string;
-  date: Date;
+  date?: Date;
   owned: boolean;
   perfectGame: boolean;
   playtime: number;
