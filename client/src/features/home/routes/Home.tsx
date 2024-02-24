@@ -4,7 +4,6 @@ import {
   Container,
   Divider,
   Flex,
-  Group,
   SimpleGrid,
   Text,
   Title,
@@ -27,6 +26,7 @@ export const Home = () => {
         mih={'50vh'}
         align="center"
         justify="center"
+        py="xl"
         style={{
           backgroundSize: 'cover',
           backgroundAttachment: 'fixed',
@@ -34,8 +34,8 @@ export const Home = () => {
         }}
       >
         <Container>
-          <Group grow align="center" justify="center">
-            <Box>
+          <SimpleGrid cols={{ base: 1, md: 2 }}>
+            <Flex justify="center" direction="column" my="md">
               <Title c="white">Track your gaming activity.</Title>
               <Title c="white">Track it in style.</Title>
 
@@ -45,8 +45,8 @@ export const Home = () => {
                 beating.games is a beautiful way to organize your video game
                 backlog.
               </Text>
-            </Box>
-            <Box ta="center">
+            </Flex>
+            <Flex justify="center" align="center" direction="column" my="md">
               <video
                 autoPlay
                 playsInline
@@ -54,8 +54,8 @@ export const Home = () => {
                 src="/videos/demo.mp4"
                 style={{ maxWidth: '75%' }}
               />
-            </Box>
-          </Group>
+            </Flex>
+          </SimpleGrid>
         </Container>
       </Flex>
 

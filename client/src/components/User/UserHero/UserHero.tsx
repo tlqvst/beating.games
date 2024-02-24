@@ -64,7 +64,7 @@ export const UserHero = ({
             />
             <Box>
               <Title>{username}'s profile</Title>
-              <Group style={{ textTransform: 'uppercase' }}>
+              <Group className={userHeroStyles.stats({ isSticky })}>
                 {inProgress && (
                   <Text c="dimmed">
                     Playing {`${inProgress} game${inProgress !== 1 ? 's' : ''}`}

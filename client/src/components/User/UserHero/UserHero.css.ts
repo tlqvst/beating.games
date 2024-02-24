@@ -42,7 +42,25 @@ const hero = recipe({
       true: {
         position: 'fixed',
         minHeight: 'unset',
-        paddingTop: 'var(--mantine-header-height)',
+        paddingTop: 'var(--app-shell-header-height)',
+      },
+    },
+  },
+});
+
+const stats = recipe({
+  base: {
+    textTransform: 'uppercase',
+  },
+
+  variants: {
+    isSticky: {
+      true: {
+        '@media': {
+          [`(max-width: ${vars.breakpoints.sm})`]: {
+            display: 'none',
+          },
+        },
       },
     },
   },
@@ -83,4 +101,5 @@ export const userHeroStyles = {
   gradient,
   user,
   avatar,
+  stats,
 };

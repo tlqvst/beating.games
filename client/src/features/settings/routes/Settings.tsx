@@ -84,7 +84,7 @@ export const Settings = () => {
           <Title my={'md'}>User settings</Title>
           <Divider my={'md'} />
           <form onSubmit={handleSubmit}>
-            <SimpleGrid cols={2} mb="lg">
+            <SimpleGrid cols={{ base: 1, md: 2 }} mb="lg">
               <Box>
                 <Dropzone
                   onDrop={(files) => form.setFieldValue('avatar', files[0])}
