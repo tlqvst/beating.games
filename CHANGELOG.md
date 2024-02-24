@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/tlqvst/beating.games/compare/v1.2.3...v1.3.0) (2024-02-24)
+
+
+### Features
+
+* nullable date ([4a408fa](https://github.com/tlqvst/beating.games/commit/4a408fa74e1f2471684f5a7c5a0bc39f42c093c0))
+
 ## [1.2.3](https://github.com/tlqvst/beating.games/compare/v1.2.2...v1.2.3) (2024-02-24)
 
 
