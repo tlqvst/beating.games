@@ -41,7 +41,7 @@ export class GameService {
 
     // Fetch games based on filters
     const filteredGames = await this.prisma.game.findMany({
-      orderBy: { id: 'desc' },
+      orderBy: { date: 'desc' },
       where: Object.fromEntries(
         Object.entries(where).filter(([, value]) => value !== undefined),
       ),
