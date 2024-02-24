@@ -143,7 +143,7 @@ export class GameService {
     let fileName: string | null = null;
 
     if (background) {
-      fileName = await this.fileService.saveBackground(background);
+      fileName = await this.fileService.saveGameArt(background);
     }
 
     return this.prisma.game.update({
