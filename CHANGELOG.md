@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/tlqvst/beating.games/compare/v1.3.0...v1.4.0) (2024-02-24)
+
+
+### Features
+
+* **client/profile:** pagination on top ([40b460c](https://github.com/tlqvst/beating.games/commit/40b460c088af8a4dca3fdc85a15e224157e6a8f8))
+
 # [1.3.0](https://github.com/tlqvst/beating.games/compare/v1.2.3...v1.3.0) (2024-02-24)
 
 
