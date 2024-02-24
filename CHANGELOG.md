@@ -1,3 +1,11 @@
+# [1.2.0](https://github.com/tlqvst/beating.games/compare/v1.1.0...v1.2.0) (2024-02-24)
+
+
+### Features
+
+* **client:** align not found errors ([8a51e93](https://github.com/tlqvst/beating.games/commit/8a51e9376ed6a9c57cee704a273752ff8522357c))
+* meta tags ([6834dac](https://github.com/tlqvst/beating.games/commit/6834dac263451d9efb8aca273f161db32049da59))
+
 # [1.1.0](https://github.com/tlqvst/beating.games/compare/v1.0.0...v1.1.0) (2024-02-24)
 
 
