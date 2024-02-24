@@ -1,0 +1,5 @@
+.first {
+	@media(max-width: $mantine-breakpoint-md) {
+		order: -1;
+	}
+}

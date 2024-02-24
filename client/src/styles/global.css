@@ -1,0 +1,44 @@
+@font-face {
+	font-family: 'Proxima Nova';
+	src: local('Proxima Nova'), url('../fonts/Proxima-Nova_Light.woff2') format('woff2');
+	font-weight: 100;
+	font-style: normal;
+	font-display: auto;
+	unicode-range: U+20-5F, U+61-7A, U+7C, U+A0, U+A7, U+A9, U+C0, U+C4-C5, U+C9, U+D6, U+E0, U+E4-E5, U+E9, U+F6, U+2010-2011, U+2013-2014, U+2018-2019, U+201C-201D, U+2020-2021, U+2026, U+2030, U+2032-2033, U+20AC, U+2212;
+}
+
+@font-face {
+	font-family: 'Proxima Nova';
+	src: local('Proxima Nova'), url('../fonts/Proxima-Nova_Regular.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: auto;
+	unicode-range: U+20-5F, U+61-7A, U+7C, U+A0, U+A7, U+A9, U+C0, U+C4-C5, U+C9, U+D6, U+E0, U+E4-E5, U+E9, U+F6, U+2010-2011, U+2013-2014, U+2018-2019, U+201C-201D, U+2020-2021, U+2026, U+2030, U+2032-2033, U+20AC, U+2212;
+}
+
+@font-face {
+	font-family: 'Proxima Nova';
+	src: local('Proxima Nova'), url('../fonts/Proxima-Nova_Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: auto;
+	unicode-range: U+20-5F, U+61-7A, U+7C, U+A0, U+A7, U+A9, U+C0, U+C4-C5, U+C9, U+D6, U+E0, U+E4-E5, U+E9, U+F6, U+2010-2011, U+2013-2014, U+2018-2019, U+201C-201D, U+2020-2021, U+2026, U+2030, U+2032-2033, U+20AC, U+2212;
+}
+
+@font-face {
+	font-family: 'Proxima Nova';
+	src: local('Proxima Nova'), url('../fonts/Proxima-Nova_Extrabold.woff2') format('woff2');
+	font-weight: 900;
+	font-style: normal;
+	font-display: auto;
+	unicode-range: U+20-5F, U+61-7A, U+7C, U+A0, U+A7, U+A9, U+C0, U+C4-C5, U+C9, U+D6, U+E0, U+E4-E5, U+E9, U+F6, U+2010-2011, U+2013-2014, U+2018-2019, U+201C-201D, U+2020-2021, U+2026, U+2030, U+2032-2033, U+20AC, U+2212;
+}
+
+html {
+	font-family: 'Proxima Nova', var(--mantine-font-family);
+}
+
+body {
+	font-weight: 500;
+	font-feature-settings: 'salt' 1;
+}
