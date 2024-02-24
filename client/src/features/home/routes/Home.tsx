@@ -39,19 +39,20 @@ export const Home = () => {
               <Title c="white">Track your gaming activity.</Title>
               <Title c="white">Track it in style.</Title>
 
-              <Divider my="md" />
+              <Divider my="md" color="white" />
 
               <Text c="white">
                 beating.games is a beautiful way to organize your video game
                 backlog.
               </Text>
             </Box>
-            <Box>
+            <Box ta="center">
               <video
                 autoPlay
+                playsInline
                 muted
-                src="https://api.beating.games/video/demo.mp4"
-                style={{ maxWidth: '100%' }}
+                src="/public/videos/demo.mp4"
+                style={{ maxWidth: '75%' }}
               />
             </Box>
           </Group>
