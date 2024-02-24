@@ -145,6 +145,11 @@ export const Profile = () => {
     });
   }, []);
 
+  const handleChangedPage = (page: number, scrollToTop: boolean) => {
+    setPage(page - 1);
+    if (scrollToTop) window.scrollTo(0, 0);
+  };
+
   const getBackground = () =>
     profile.data?.background
       ? getBackgroundUrl(profile.data?.background)
@@ -214,6 +219,15 @@ export const Profile = () => {
       </Drawer>
 
       <Container size="xl">
+        <Center my="lg">
+          <Pagination
+            size="lg"
+            value={page + 1}
+            onChange={(page) => handleChangedPage(page, false)}
+            total={Math.ceil(games.data!.total / games.data!.take)}
+          />
+        </Center>
+
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={1}>
           {games.data?.games.map((game) => (
             <Game
@@ -237,7 +251,7 @@ export const Profile = () => {
           <Pagination
             size="lg"
             value={page + 1}
-            onChange={(page) => setPage(page - 1)}
+            onChange={(page) => handleChangedPage(page, true)}
             total={Math.ceil(games.data!.total / games.data!.take)}
           />
         </Center>
