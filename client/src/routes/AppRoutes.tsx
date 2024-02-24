@@ -1,5 +1,6 @@
 import { LoggedInLayout } from '@/components/Layout/Layouts/LoggedInLayout';
 import { LoggedOutLayout } from '@/components/Layout/Layouts/LoggedOutLayout';
+import { NotFound } from '@/components/NotFound/NotFound';
 import { Home } from '@/features/home';
 import { Profile } from '@/features/profile';
 import { Settings } from '@/features/settings';
@@ -32,6 +33,7 @@ export const AppRoutes = () => {
           <Route element={<GuardLogin isLoggedIn={user.data?.isLoggedIn} />}>
             <Route path="/user/settings" element={<Settings />} />
           </Route>
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </BrowserRouter>
