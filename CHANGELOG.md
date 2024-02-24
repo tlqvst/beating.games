@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/tlqvst/beating.games/compare/v1.2.1...v1.2.2) (2024-02-24)
+
+
+### Bug Fixes
+
+* **api:** game art save on game update ([e342b3c](https://github.com/tlqvst/beating.games/commit/e342b3c33213ef47c736d40fcb769f6513b676a2))
+
 ## [1.2.1](https://github.com/tlqvst/beating.games/compare/v1.2.0...v1.2.1) (2024-02-24)
 
 
