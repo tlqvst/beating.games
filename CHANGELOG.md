@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/tlqvst/beating.games/compare/v1.2.2...v1.2.3) (2024-02-24)
+
+
+### Bug Fixes
+
+* **api/games:** sort by date desc ([d133f71](https://github.com/tlqvst/beating.games/commit/d133f71829a38805a3204137ab24165a73f9b773))
+
 ## [1.2.2](https://github.com/tlqvst/beating.games/compare/v1.2.1...v1.2.2) (2024-02-24)
 
 
