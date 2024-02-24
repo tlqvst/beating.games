@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/tlqvst/beating.games/compare/v1.2.0...v1.2.1) (2024-02-24)
+
+
+### Bug Fixes
+
+* **client:** handle empty backgrounds ([7b212de](https://github.com/tlqvst/beating.games/commit/7b212de9a7de45ff7f27c97f80ac811be65e73b4))
+
 # [1.2.0](https://github.com/tlqvst/beating.games/compare/v1.1.0...v1.2.0) (2024-02-24)
 
 
