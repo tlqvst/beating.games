@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/tlqvst/beating.games/compare/v1.4.0...v1.5.0) (2024-02-24)
+
+
+### Features
+
+* **client/profile:** lower pagination scrolls to upper ([741e59f](https://github.com/tlqvst/beating.games/commit/741e59f64d4f54c6cd7b2e927e1d225be907bdd0))
+
 # [1.4.0](https://github.com/tlqvst/beating.games/compare/v1.3.0...v1.4.0) (2024-02-24)
 
 
