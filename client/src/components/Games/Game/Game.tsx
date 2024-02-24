@@ -20,7 +20,11 @@ export const Game = ({ game, onDelete, onUpdate }: IGame) => {
     <Box className={gameStyles.root}>
       <Box className={gameStyles.image}>
         <img
-          src={getGameUrl(game.background)}
+          src={
+            Boolean(game.background)
+              ? getGameUrl(game.background)
+              : `/images/bg.svg`
+          }
           className={gameStyles.imageTag}
         />
       </Box>
