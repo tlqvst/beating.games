@@ -19,6 +19,9 @@ export class AuthService {
   ): Promise<Omit<User, 'password'> | null> {
     const user = await this.userService.getUser({ username });
 
+    if (!user)
+      throw new UnauthorizedException('Invalid username or password provided.');
+
     if (!bcrypt.compareSync(pass, user.password)) {
       throw new UnauthorizedException();
     }
