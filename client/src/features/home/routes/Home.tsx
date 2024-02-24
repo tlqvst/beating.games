@@ -51,7 +51,7 @@ export const Home = () => {
                 autoPlay
                 playsInline
                 muted
-                src="/public/videos/demo.mp4"
+                src="/videos/demo.mp4"
                 style={{ maxWidth: '75%' }}
               />
             </Box>
