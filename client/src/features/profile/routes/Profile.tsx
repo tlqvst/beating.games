@@ -2,15 +2,17 @@ import {
   ActionIcon,
   Affix,
   Alert,
+  Anchor,
   Center,
   Container,
   Drawer,
   Pagination,
   SimpleGrid,
+  Text,
   Title,
   Tooltip,
 } from '@mantine/core';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Loading } from '@/components/Loading/Loading';
 import {
   getGetGamesQueryKey,
@@ -159,9 +161,15 @@ export const Profile = () => {
   if (games.isError || profile.isError)
     return (
       <Container my="xl">
-        <Alert title={<Title order={2}>Failed to load user</Title>}>
-          This user could not be found, or the database could not be reached.
-          Please try again later.
+        <Alert title={<Title>Failed to load user</Title>}>
+          <Text>
+            This user could not be found, or the database could not be reached.
+            Please try again later, or{' '}
+            <Anchor component={Link} to={'/'}>
+              go home
+            </Anchor>
+            .
+          </Text>
         </Alert>
       </Container>
     );
