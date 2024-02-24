@@ -167,10 +167,9 @@ export const Home = () => {
                 We have no intention of locking you down! Your data is yours!
               </Text>
               <Text>
-                beating.games makes it easy to manage which games you are
-                currently playing, games you have finished, and games that you
-                want to play in the future. By actually looking at the numbers
-                you'll increase your motivation to finish games
+                beating.games lets you export your data as CSV so you can easily
+                take it wherever you want. If you'd rather manage it yourself,
+                or if you find another service, your data is always yours.
               </Text>
             </Box>
             <Center ta="center" className={classes.first}>
