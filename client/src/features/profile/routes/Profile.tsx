@@ -32,7 +32,7 @@ import { UpdateGame } from '../components/UpdateGame';
 import { GameDto } from '@/generated/dto';
 import { useDisclosure, useDocumentTitle, useHotkeys } from '@mantine/hooks';
 import { GameFilters } from '@/components/Games/GameFilters/GameFilters';
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { IGameFilters } from '@/components/Games/GameFilters/IGameFilters';
 
 export const Profile = () => {
@@ -43,6 +43,8 @@ export const Profile = () => {
   const [page, setPage] = useState(0);
   const [filtersOpen, { open: openFilters, close: closeFilters }] =
     useDisclosure(false);
+
+  const upperPaginationRef = useRef<HTMLDivElement>(null);
 
   useHotkeys([
     ['alt+A', () => handleCreateGame()],
@@ -145,10 +147,15 @@ export const Profile = () => {
     });
   }, []);
 
-  const handleChangedPage = (page: number, scrollToTop: boolean) => {
-    setPage(page - 1);
-    if (scrollToTop) window.scrollTo(0, 0);
-  };
+  const handleChangedPage = useCallback(
+    (page: number, scrollToTop: boolean) => {
+      setPage(page - 1);
+      if (scrollToTop && upperPaginationRef.current) {
+        window.scrollTo(0, upperPaginationRef.current.offsetTop - 200);
+      }
+    },
+    [page],
+  );
 
   const getBackground = () =>
     profile.data?.background
@@ -221,6 +228,7 @@ export const Profile = () => {
       <Container size="xl">
         <Center my="lg">
           <Pagination
+            ref={upperPaginationRef}
             size="lg"
             value={page + 1}
             onChange={(page) => handleChangedPage(page, false)}
