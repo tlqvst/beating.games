@@ -161,20 +161,15 @@ export const Profile = () => {
     [page],
   );
 
-  const getBackground = () =>
-    profile.data?.background
-      ? getBackgroundUrl(profile.data?.background)
-      : undefined;
-
-  const getAvatar = () =>
-    profile.data?.avatar ? getAvatarUrl(profile.data?.avatar) : undefined;
-
-  const isProfileOwner = user.data?.username === params.username!;
-  const isGameOwner = (userId: number) => userId === user.data?.userId;
-
   if (profile.isLoading || games.isLoading) return <Loading />;
 
-  if (games.isError || profile.isError)
+  if (
+    games.isError ||
+    profile.isError ||
+    !games.isSuccess ||
+    !profile.isSuccess ||
+    !user.isSuccess
+  )
     return (
       <Container my="xl">
         <Alert title={<Title>Failed to load user</Title>}>
@@ -190,17 +185,28 @@ export const Profile = () => {
       </Container>
     );
 
+  const getBackground = () =>
+    profile.data.background
+      ? getBackgroundUrl(profile.data.background)
+      : undefined;
+
+  const getAvatar = () =>
+    profile.data.avatar ? getAvatarUrl(profile.data.avatar) : undefined;
+
+  const isProfileOwner = user.data.username === params.username;
+  const isGameOwner = (userId: number) => userId === user.data.userId;
+
   return (
     <>
       <UserHero
-        username={profile.data?.username ?? ''}
+        username={profile.data.username ?? ''}
         background={getBackground()}
         avatar={getAvatar()}
-        inProgress={games.data?.inProgress}
-        beaten={games.data?.beaten}
-        continual={games.data?.continual}
-        dropped={games.data?.dropped}
-        wantToPlay={games.data?.wantToPlay}
+        inProgress={games.data.inProgress}
+        beaten={games.data.beaten}
+        continual={games.data.continual}
+        dropped={games.data.dropped}
+        wantToPlay={games.data.wantToPlay}
       />
 
       {isProfileOwner && (
@@ -235,12 +241,12 @@ export const Profile = () => {
             ref={upperPaginationRef}
             value={page + 1}
             onChange={(page) => handleChangedPage(page, false)}
-            total={Math.ceil(games.data!.total / games.data!.take)}
+            total={Math.ceil(games.data.total / games.data.take)}
           />
         </Center>
 
         <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={1}>
-          {games.data?.games.map((game) => (
+          {games.data.games.map((game) => (
             <Game
               key={game.id}
               game={game}
@@ -262,7 +268,7 @@ export const Profile = () => {
           <Pagination
             value={page + 1}
             onChange={(page) => handleChangedPage(page, true)}
-            total={Math.ceil(games.data!.total / games.data!.take)}
+            total={Math.ceil(games.data.total / games.data.take)}
           />
         </Center>
       </Container>
