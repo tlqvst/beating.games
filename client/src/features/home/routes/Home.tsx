@@ -9,11 +9,11 @@ import {
   Title,
 } from '@mantine/core';
 import {
-  IconBrush,
   IconClock,
   IconCurrencyDollar,
   IconDatabase,
   IconDeviceGamepad3,
+  IconFilter,
   IconUser,
 } from '@tabler/icons-react';
 import { vars } from '@/lib/mantine/theme';
@@ -93,7 +93,7 @@ export const Home = () => {
 
           <Center>
             <Box>
-              <IconBrush size={120} stroke={1} />
+              <IconFilter size={120} stroke={1} />
               <Title order={3} mb="md">
                 Filtering
               </Title>
