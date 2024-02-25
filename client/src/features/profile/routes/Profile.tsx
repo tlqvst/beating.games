@@ -229,7 +229,6 @@ export const Profile = () => {
         <Center my="lg">
           <Pagination
             ref={upperPaginationRef}
-            size="lg"
             value={page + 1}
             onChange={(page) => handleChangedPage(page, false)}
             total={Math.ceil(games.data!.total / games.data!.take)}
@@ -257,7 +256,6 @@ export const Profile = () => {
 
         <Center my="lg">
           <Pagination
-            size="lg"
             value={page + 1}
             onChange={(page) => handleChangedPage(page, true)}
             total={Math.ceil(games.data!.total / games.data!.take)}
