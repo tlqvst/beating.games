@@ -69,7 +69,11 @@ export const Profile = () => {
     query: { throwOnError: false, placeholderData: (a) => a },
   });
 
-  useDocumentTitle(`${profile.data?.username}'s profile | beating.games`);
+  useDocumentTitle(
+    profile.data?.username
+      ? `${profile.data.username}'s profile | beating.games`
+      : 'Loading profile.. | beating.games',
+  );
 
   const deleteGameMutation = useDeleteGame();
 
