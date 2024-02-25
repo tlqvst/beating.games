@@ -1,3 +1,17 @@
+# [1.6.0](https://github.com/tlqvst/beating.games/compare/v1.5.0...v1.6.0) (2024-02-25)
+
+
+### Bug Fixes
+
+* **client/home:** icon ([f574004](https://github.com/tlqvst/beating.games/commit/f5740043cafb587652986411835271c6fc9ba608))
+* **client/profile:** handle undefined in title ([e8e16af](https://github.com/tlqvst/beating.games/commit/e8e16af4d3924822e49f4bf259b15c72be6de510))
+* **client/profile:** smaller pagination ([892113f](https://github.com/tlqvst/beating.games/commit/892113f9ae3c425eb2b38cefb57b31ce0bf0e2aa))
+
+
+### Features
+
+* **client:** unresizeable viewport ([9bce1ac](https://github.com/tlqvst/beating.games/commit/9bce1ac06e0f01e357bd7395fa5cef8cb934e558))
+
 # [1.5.0](https://github.com/tlqvst/beating.games/compare/v1.4.0...v1.5.0) (2024-02-24)
 
 
