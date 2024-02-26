@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/tlqvst/beating.games/compare/v1.7.0...v1.8.0) (2024-02-26)
+
+
+### Features
+
+* optimize images ([045b8e7](https://github.com/tlqvst/beating.games/commit/045b8e7bfaece2bdd4aab1f3d62bd649b2cc4a0c))
+
 # [1.7.0](https://github.com/tlqvst/beating.games/compare/v1.6.0...v1.7.0) (2024-02-26)
 
 
