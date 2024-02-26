@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/tlqvst/beating.games/compare/v1.6.0...v1.7.0) (2024-02-26)
+
+
+### Features
+
+* **game:** content field optional ([0c625a7](https://github.com/tlqvst/beating.games/commit/0c625a7c7b0f3a0b1c3eaaca3c261901c50735d1))
+
 # [1.6.0](https://github.com/tlqvst/beating.games/compare/v1.5.0...v1.6.0) (2024-02-25)
 
 
