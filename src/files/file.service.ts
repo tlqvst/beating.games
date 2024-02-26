@@ -6,21 +6,31 @@ import axios, { AxiosResponse } from 'axios';
 import { randomUUID } from 'crypto';
 import { normalize } from 'path';
 import { writeFile } from 'fs/promises';
+import * as sharp from 'sharp';
 
 @Injectable()
 export class FileService {
   constructor(private readonly configService: ConfigService) {}
 
   async saveAvatar(avatar: Express.Multer.File) {
-    return await this.saveFile(avatar, 'AVATAR');
+    return await this.saveFile(avatar, 'AVATAR', {
+      width: 600,
+      height: 600,
+    });
   }
 
   async saveBackground(background: Express.Multer.File) {
-    return await this.saveFile(background, 'BACKGROUND');
+    return await this.saveFile(background, 'BACKGROUND', {
+      width: 2560,
+      height: 1440,
+    });
   }
 
   async saveGameArt(gameArt: Express.Multer.File) {
-    return await this.saveFile(gameArt, 'GAME');
+    return await this.saveFile(gameArt, 'GAME', {
+      width: 1280,
+      height: 720,
+    });
   }
 
   async saveExternalAvatar(avatar: string) {
@@ -50,8 +60,11 @@ export class FileService {
   private async saveFile(
     file: Express.Multer.File,
     fileType: 'AVATAR' | 'BACKGROUND' | 'GAME',
+    optimizeImageOptions: IOptimizeImageOptions,
   ) {
-    const extension = mimeTypes.extension(file.mimetype);
+    const optimizedImage = await this.optimizeImage(file, optimizeImageOptions);
+
+    const extension = mimeTypes.extension(optimizedImage.mimetype);
 
     const backgroundId = randomUUID();
 
@@ -65,7 +78,7 @@ export class FileService {
           `STATIC_${fileType}_DIRECTORY`,
         )}/${fileName}`,
       ),
-      file.buffer,
+      optimizedImage.buffer,
     );
 
     return fileName;
@@ -79,13 +92,9 @@ export class FileService {
 
     let response: AxiosResponse | null = null;
 
-    try {
-      response = await axios.get(url, {
-        responseType: 'stream',
-      });
-    } catch {
-      return;
-    }
+    response = await axios.get(url, {
+      responseType: 'stream',
+    });
 
     const tempFilePath = normalize(
       `${this.configService.get(
@@ -160,4 +169,33 @@ export class FileService {
       buffer,
     );
   }
+
+  private async optimizeImage(
+    image: Express.Multer.File,
+    options: IOptimizeImageOptions,
+  ): Promise<Express.Multer.File> {
+    const newImage = image;
+
+    const resizedBuffer = await sharp(image.buffer)
+      .resize({
+        width: options.width,
+        height: options.height,
+        fit: 'inside', // Maintain aspect ratio
+        withoutEnlargement: true, // Don't enlarge images smaller than 800px
+      })
+      .webp({
+        effort: 5,
+      })
+      .toBuffer();
+
+    newImage.buffer = resizedBuffer;
+    newImage.mimetype = 'image/webp';
+
+    return newImage;
+  }
+}
+
+interface IOptimizeImageOptions {
+  height: number;
+  width: number;
 }

@@ -1,3 +1,4 @@
+import { FIVE_MEGABYTES } from '@/constants/fileSizes';
 import { UpsertGameRequestDto } from '@/generated/dto';
 import {
   TextInput,
@@ -11,6 +12,7 @@ import {
 import { DatePickerInput } from '@mantine/dates';
 import { Dropzone } from '@mantine/dropzone';
 import { UseFormReturnType } from '@mantine/form';
+import { notifications } from '@mantine/notifications';
 import { IconUpload } from '@tabler/icons-react';
 
 export const GameFormFields = ({
@@ -79,8 +81,16 @@ export const GameFormFields = ({
         <Image mb="md" src={URL.createObjectURL(form.values.background)} />
       )}
       <Dropzone
+        maxSize={FIVE_MEGABYTES}
         onDrop={(files) => form.setFieldValue('background', files[0])}
         mb="md"
+        onReject={() =>
+          notifications.show({
+            color: 'red',
+            title: 'Image too large',
+            message: 'Max file size is 5 MB',
+          })
+        }
       >
         <Group justify="center" align="center">
           <IconUpload />

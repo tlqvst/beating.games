@@ -28,6 +28,7 @@ import { FileInterceptor } from '@nestjs/platform-express';
 import { ReqUser } from 'src/types/ReqUser';
 import { ListGamesRequestDto } from './dto/list-games-request.dto';
 import { UpsertGameRequestDto } from './dto/upsert-game-request-dto';
+import { log } from 'console';
 
 @Controller('game')
 @ApiTags('game')
@@ -60,6 +61,8 @@ export class GameController {
     @Body() upsertGameRequestDto: UpsertGameRequestDto,
     @UploadedFile() background: Express.Multer.File,
   ): Promise<GameModel> {
+    log(background.size);
+
     return await this.gameService.createGame(
       {
         ...upsertGameRequestDto,

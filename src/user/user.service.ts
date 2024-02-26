@@ -14,7 +14,7 @@ import { FileService } from 'src/files/file.service';
 @Injectable()
 export class UserService {
   constructor(
-    private prisma: PrismaService,
+    private readonly prisma: PrismaService,
     private readonly fileService: FileService,
   ) {}
 

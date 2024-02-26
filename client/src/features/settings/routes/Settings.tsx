@@ -1,4 +1,5 @@
 import { UserHero } from '@/components/User/UserHero/UserHero';
+import { FIVE_MEGABYTES } from '@/constants/fileSizes';
 import { UpdateUserSettingsDto } from '@/generated/dto';
 import {
   getGetProfileQueryKey,
@@ -20,7 +21,7 @@ import {
 import { Dropzone } from '@mantine/dropzone';
 import { useForm } from '@mantine/form';
 import { useDocumentTitle } from '@mantine/hooks';
-import { showNotification } from '@mantine/notifications';
+import { notifications, showNotification } from '@mantine/notifications';
 import { IconUpload } from '@tabler/icons-react';
 import { useQueryClient } from '@tanstack/react-query';
 
@@ -87,6 +88,14 @@ export const Settings = () => {
             <SimpleGrid cols={{ base: 1, md: 2 }} mb="lg">
               <Box>
                 <Dropzone
+                  maxSize={FIVE_MEGABYTES}
+                  onReject={() =>
+                    notifications.show({
+                      color: 'red',
+                      title: 'Image too large',
+                      message: 'Max file size is 5 MB',
+                    })
+                  }
                   onDrop={(files) => form.setFieldValue('avatar', files[0])}
                   mb="md"
                 >
@@ -103,6 +112,14 @@ export const Settings = () => {
               </Box>
 
               <Dropzone
+                maxSize={FIVE_MEGABYTES}
+                onReject={() =>
+                  notifications.show({
+                    color: 'red',
+                    title: 'Image too large',
+                    message: 'Max file size is 5 MB',
+                  })
+                }
                 onDrop={(files) => form.setFieldValue('background', files[0])}
                 mb="md"
               >
