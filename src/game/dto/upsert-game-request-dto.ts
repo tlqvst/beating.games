@@ -27,9 +27,9 @@ export class UpsertGameRequestDto {
   @IsIn(Object.values(EGameStatus))
   status: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   @MaxLength(1000)
-  content: string;
+  content?: string;
 
   @ApiProperty()
   @ToBoolean()

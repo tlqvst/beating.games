@@ -107,8 +107,8 @@ export const Game = ({ game, onDelete, onUpdate }: IGame) => {
 
         <Box className={gameStyles.hoverContent}>
           <Box className={gameStyles.hoverContentInner}>
-            <Text mb="md">Added on: {addedOnFormatted}</Text>
-            {game.content}
+            <Text>Added on: {addedOnFormatted}</Text>
+            {Boolean(game.content) && <Text mt="md">{game.content}</Text>}
           </Box>
         </Box>
       </Box>

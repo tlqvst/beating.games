@@ -42,13 +42,7 @@ export const GameFormFields = ({
         withAsterisk
         {...form.getInputProps('system')}
       />
-      <Textarea
-        label="Content"
-        mb="md"
-        required
-        withAsterisk
-        {...form.getInputProps('content')}
-      />
+      <Textarea label="Content" mb="md" {...form.getInputProps('content')} />
       <TextInput
         inputMode="numeric"
         label="Playtime"

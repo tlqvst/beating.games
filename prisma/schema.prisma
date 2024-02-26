@@ -54,7 +54,7 @@ model Game {
   background String? @db.VarChar(200)
   playtime Int?
   status String @db.VarChar(40) @default("In Progress")
-  content String @db.VarChar(1000)
+  content String? @db.VarChar(1000)
   owned Boolean
   achievementsLink String? @db.VarChar(200)
   perfectGame Boolean
