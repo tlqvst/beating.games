@@ -16,7 +16,7 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
 
   /**
    * Do not error on public endpoints where we still need user info
-   * e.g. user status endpoint
+   * Useful for endpoints such as the user endpoint where we want to return the user if they have a token, but we want to let the client know they're signed out without erroring.
    */
   handleRequest<TUser = any>(err: any, user: any): TUser {
     if (this.isPublic) return user;
