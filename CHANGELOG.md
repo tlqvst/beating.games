@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/tlqvst/beating.games/compare/v1.9.0...v1.9.1) (2024-02-27)
+
+
+### Bug Fixes
+
+* **api/csv:** image urls ([df9a4b7](https://github.com/tlqvst/beating.games/commit/df9a4b74978f5c851065ccd3cbcf3a7871d45019))
+
 # [1.9.0](https://github.com/tlqvst/beating.games/compare/v1.8.0...v1.9.0) (2024-02-27)
 
 
