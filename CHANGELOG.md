@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/tlqvst/beating.games/compare/v1.8.0...v1.9.0) (2024-02-27)
+
+
+### Features
+
+* csv export ([bc12d0f](https://github.com/tlqvst/beating.games/commit/bc12d0f253cf948dd34f774b0efbed2795739cb2))
+
 # [1.8.0](https://github.com/tlqvst/beating.games/compare/v1.7.0...v1.8.0) (2024-02-26)
 
 
