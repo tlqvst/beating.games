@@ -20,7 +20,7 @@ Clone the repo
 yarn # (--ignore-engines if using yarn 1.x)
 
 ## setup .env
-cp .env.sample .env # adjust it accordingly
+cp .env.sample .env # adjust it accordingly, make sure to create folders for static content and set permissions to the process runner
 
 ## run db migrations
 npx prisma migrate deploy
