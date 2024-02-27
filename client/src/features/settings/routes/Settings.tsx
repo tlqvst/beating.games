@@ -7,6 +7,7 @@ import {
   useGetProfile,
   useUpdateUserSettings,
 } from '@/generated/user/user';
+import { downloadFileAsBlob } from '@/utils/downloadFile';
 import { getAvatarUrl, getBackgroundUrl } from '@/utils/imageUrls';
 import {
   Box,
@@ -24,6 +25,7 @@ import { useDocumentTitle } from '@mantine/hooks';
 import { notifications, showNotification } from '@mantine/notifications';
 import { IconUpload } from '@tabler/icons-react';
 import { useQueryClient } from '@tanstack/react-query';
+import axios from 'axios';
 
 export const Settings = () => {
   useDocumentTitle('User settings | beating.games');
@@ -35,7 +37,7 @@ export const Settings = () => {
     },
   });
   const queryClient = useQueryClient();
-  const mutation = useUpdateUserSettings();
+  const updateSettingsMutation = useUpdateUserSettings();
 
   const form = useForm<UpdateUserSettingsDto>({
     initialValues: {
@@ -46,7 +48,7 @@ export const Settings = () => {
 
   const handleSubmit = form.onSubmit(async (settings) => {
     try {
-      await mutation.mutateAsync({ data: settings });
+      await updateSettingsMutation.mutateAsync({ data: settings });
       queryClient.invalidateQueries({
         queryKey: getGetProfileQueryKey(loginStatus.data!.username!),
       });
@@ -56,6 +58,23 @@ export const Settings = () => {
       });
     } catch (error: unknown) {}
   });
+
+  const handleExportGames = async () => {
+    try {
+      const response = await axios.post<string>(
+        `${import.meta.env.VITE_API_BASE}/api/game/export`,
+      );
+      const data = response.data;
+
+      downloadFileAsBlob('games.csv', data);
+    } catch (error) {
+      notifications.show({
+        title: 'Export failed',
+        message:
+          'Your list of games could not be exported. Please try again later.',
+      });
+    }
+  };
 
   const getBackground = () => {
     if (form.values.background)
@@ -135,24 +154,13 @@ export const Settings = () => {
                   </Box>
                 </Group>
               </Dropzone>
-              {/* <TextInput
-              mb="sm"
-              label="Background"
-              id="background"
-              placeholder="Background"
-              type={'url'}
-              {...form.getInputProps('background')}
-            />
-            <TextInput
-              mb="sm"
-              label="Avatar"
-              id="avatar"
-              placeholder="Avatar"
-              type={'url'}
-              {...form.getInputProps('avatar')}
-            /> */}
             </SimpleGrid>
-            <Button type="submit">Save settings</Button>
+            <Button type="submit" mr="md">
+              Save settings
+            </Button>
+            <Button variant="subtle" onClick={handleExportGames}>
+              Export games to CSV
+            </Button>
           </form>
         </Container>
       </>

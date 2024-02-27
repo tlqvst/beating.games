@@ -11,6 +11,7 @@ import {
   UploadedFile,
   UseInterceptors,
   Query,
+  Res,
 } from '@nestjs/common';
 import {
   ApiBearerAuth,
@@ -29,6 +30,8 @@ import { ReqUser } from 'src/types/ReqUser';
 import { ListGamesRequestDto } from './dto/list-games-request.dto';
 import { UpsertGameRequestDto } from './dto/upsert-game-request-dto';
 import { log } from 'console';
+import { Response } from 'express';
+import { stringify } from 'csv-stringify/sync';
 
 @Controller('game')
 @ApiTags('game')
@@ -108,5 +111,34 @@ export class GameController {
     @Param('id') id: number,
   ): Promise<GameModel> {
     return this.gameService.deleteGame(Number(id), req.user.userId);
+  }
+
+  @Post('/export')
+  @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth()
+  @ApiResponse({
+    status: 200,
+    description: 'List of games successfully exported',
+  })
+  @ApiResponse({ status: 403, description: 'Unauthorized user' })
+  @ApiOperation({ summary: 'Export currently logged in users games' })
+  async exportGamesCsv(@Request() req, @Res() res: Response): Promise<string> {
+    res.setHeader('Content-Type', 'text/csv');
+    res.setHeader(
+      'Content-Disposition',
+      `attachment; filename="games_export.csv"`,
+    );
+
+    const games = await this.gameService.exportGames(
+      (req.user as ReqUser).userId,
+    );
+
+    res.send(
+      stringify(games, {
+        header: true,
+      }),
+    );
+
+    return '';
   }
 }

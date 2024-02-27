@@ -178,4 +178,33 @@ export class GameService {
       },
     });
   }
+
+  async exportGames(userId: number) {
+    const user = this.prisma.user.findFirst({
+      where: { id: userId },
+    });
+    if (!user) throw new NotFoundException();
+
+    const games = await this.prisma.game.findMany({
+      where: {
+        user: {
+          id: userId,
+        },
+      },
+    });
+
+    return games.map((game) => ({
+      addedOn: game.addedOn,
+      date: game.date,
+      title: game.title,
+      system: game.system,
+      background: game.background,
+      playtime: game.playtime,
+      status: game.status,
+      content: game.content,
+      owned: game.owned,
+      achievementsLink: game.achievementsLink,
+      perfectGame: game.perfectGame,
+    }));
+  }
 }

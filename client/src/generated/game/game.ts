@@ -250,4 +250,54 @@ export const useDeleteGame = <TError = unknown,
 
       return useMutation(mutationOptions);
     }
+    /**
+ * @summary Export currently logged in users games
+ */
+export const exportGamesCsv = (
+    
+ options?: SecondParameter<typeof orvalInstance>,) => {
+      
+      
+      return orvalInstance<void>(
+      {url: `/api/game/export`, method: 'POST'
+    },
+      options);
+    }
+  
+
+
+export const getExportGamesCsvMutationOptions = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof exportGamesCsv>>, TError,void, TContext>, request?: SecondParameter<typeof orvalInstance>}
+): UseMutationOptions<Awaited<ReturnType<typeof exportGamesCsv>>, TError,void, TContext> => {
+ const {mutation: mutationOptions, request: requestOptions} = options ?? {};
+
+      
+
+
+      const mutationFn: MutationFunction<Awaited<ReturnType<typeof exportGamesCsv>>, void> = () => {
+          
+
+          return  exportGamesCsv(requestOptions)
+        }
+
+        
+
+
+   return  { mutationFn, ...mutationOptions }}
+
+    export type ExportGamesCsvMutationResult = NonNullable<Awaited<ReturnType<typeof exportGamesCsv>>>
+    
+    export type ExportGamesCsvMutationError = unknown
+
+    /**
+ * @summary Export currently logged in users games
+ */
+export const useExportGamesCsv = <TError = unknown,
+    TContext = unknown>(options?: { mutation?:UseMutationOptions<Awaited<ReturnType<typeof exportGamesCsv>>, TError,void, TContext>, request?: SecondParameter<typeof orvalInstance>}
+) => {
+
+      const mutationOptions = getExportGamesCsvMutationOptions(options);
+
+      return useMutation(mutationOptions);
+    }
     

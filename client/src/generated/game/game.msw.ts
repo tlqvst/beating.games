@@ -75,9 +75,24 @@ export const getDeleteGameMockHandler = () => {
     )
   })
 }
+
+export const getExportGamesCsvMockHandler = () => {
+  return http.post('*/api/game/export', async () => {
+    await delay(1000);
+    return new HttpResponse(null,
+      {
+        status: 200,
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
+    )
+  })
+}
 export const getGameMock = () => [
   getGetGamesMockHandler(),
   getCreateGameMockHandler(),
   getUpdateGameMockHandler(),
-  getDeleteGameMockHandler()
+  getDeleteGameMockHandler(),
+  getExportGamesCsvMockHandler()
 ]
