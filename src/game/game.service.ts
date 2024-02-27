@@ -10,12 +10,14 @@ import { FileService } from 'src/files/file.service';
 import { ListGamesResponseDto } from './dto/list-games-response.dto';
 import { EGameStatus } from 'src/types/TGameStatus';
 import { isDateParseable } from 'src/utils/date';
+import { ConfigService } from '@nestjs/config';
 
 @Injectable()
 export class GameService {
   constructor(
     private prisma: PrismaService,
     private readonly fileService: FileService,
+    private readonly configService: ConfigService,
   ) {}
 
   async gamesWithFilters(
@@ -198,7 +200,12 @@ export class GameService {
       date: game.date,
       title: game.title,
       system: game.system,
-      background: game.background,
+      // TODO: Improve handling image URLs
+      background: Boolean(game.background)
+        ? `${this.configService.get('BASE_URL')}/static/images/games/${
+            game.background
+          }`
+        : '',
       playtime: game.playtime,
       status: game.status,
       content: game.content,
