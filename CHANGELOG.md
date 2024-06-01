@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/tlqvst/beating.games/compare/v1.9.1...v1.10.0) (2024-06-01)
+
+
+### Features
+
+* **client:** react 19 + compiler ([e5f1682](https://github.com/tlqvst/beating.games/commit/e5f168267ae86667c342abcb0e874bda0dc81870))
+
 ## [1.9.1](https://github.com/tlqvst/beating.games/compare/v1.9.0...v1.9.1) (2024-02-27)
 
 
