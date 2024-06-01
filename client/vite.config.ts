@@ -8,15 +8,14 @@ import path from 'path';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    react(),
-    svgr(),
-    tsconfigPaths(),
-    vanillaExtractPlugin(),
     react({
       babel: {
         plugins: [['babel-plugin-react-compiler']],
       },
     }),
+    svgr(),
+    tsconfigPaths(),
+    vanillaExtractPlugin(),
   ],
   resolve: {
     alias: {
