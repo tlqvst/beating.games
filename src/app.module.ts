@@ -11,7 +11,6 @@ import { GameController } from './game/game.controller';
 import { GameModule } from './game/game.module';
 import { ConfigModule } from '@nestjs/config';
 import { FileModule } from './files/file.module';
-import { MongoMigrationModule } from './mongomigration/mongomigration.module';
 
 @Module({
   controllers: [GameController, AuthController, UserController],
@@ -27,7 +26,6 @@ import { MongoMigrationModule } from './mongomigration/mongomigration.module';
     GameModule,
     RoleModule,
     FileModule,
-    MongoMigrationModule,
   ],
 })
 export class AppModule {}
