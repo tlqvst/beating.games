@@ -7,11 +7,20 @@ import path from 'path';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), svgr(), tsconfigPaths(), vanillaExtractPlugin()],
+  plugins: [
+    react({
+      babel: {
+        plugins: [['babel-plugin-react-compiler']],
+      },
+    }),
+    svgr(),
+    tsconfigPaths(),
+    vanillaExtractPlugin(),
+  ],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-    }
+      '@': path.resolve(__dirname, './src'),
+    },
   },
   server: {
     port: 3000,
