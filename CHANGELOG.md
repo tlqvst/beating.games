@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/tlqvst/beating.games/compare/v1.10.0...v1.10.1) (2024-06-01)
+
+
+### Bug Fixes
+
+* remove references to deleted module ([fdbcf59](https://github.com/tlqvst/beating.games/commit/fdbcf59f1ca7cc2ac2cc51ee3a473dd54650db15))
+
 # [1.10.0](https://github.com/tlqvst/beating.games/compare/v1.9.1...v1.10.0) (2024-06-01)
 
 
